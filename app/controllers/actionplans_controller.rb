@@ -1,6 +1,6 @@
 class ActionplansController < ApplicationController
   before_action :require_user_logged_in
-  before_action :correct_user, only: [:destroy]
+  before_action :correct_user, only: [:update,:edit,:destroy]
   
   def index
     if logged_in?
@@ -34,7 +34,6 @@ class ActionplansController < ApplicationController
   end
 
   def edit
-    @actionplan = current_user.actionplans.find_by(id: params[:id])
   end
 
   def update
