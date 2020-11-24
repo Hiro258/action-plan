@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+
+    <%= form_with(model: @actionplan, local: true) do |f| %>
+    　<%= render 'layouts/error_messages', model: f.object %>
+      
+      <div class="form-group">
+        <%= f.label :infosource, '参考情報' %>
+        <%= f.text_field :infosource, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :study, '学んだことは？' %>
+        <%= f.text_field :study, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :action, 'アクションプラン' %>
+        <%= f.text_field :action, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :status, '状態' %>
+        <%= f.text_field :status, class: 'form-control' %>
+      </div>
+
+      <%= f.submit '登録する', class: 'btn btn-primary btn-block' %>
+    <% end %>
+  </div>
+</div>

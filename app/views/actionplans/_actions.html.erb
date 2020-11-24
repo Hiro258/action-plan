@@ -1,0 +1,27 @@
+<ul class="list-unstyled">
+  
+  <% actionplans.each do |actionplan| %>
+    <li class="media mb-3">
+      <div class="media-body">
+        <div>
+          <%= link_to actionplan.user.name, user_path(actionplan.user) %>
+        </div>
+        <div>
+          <p><%= actionplan.action %></p>
+          <%= link_to actionplan.action, actionplan_path(actionplan.user) %>
+        </div>
+        <div>
+          <% if current_user == actionplan.user %>
+            <%= link_to "削除", actionplan, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+          <% end %>
+        </div>
+        <div>
+          <% if current_user == actionplan.user %>
+            <%= link_to "編集", edit_actionplan_path, class: 'btn btn-danger btn-sm' %>
+          <% end %>
+        </div>
+      </div>
+    </li>
+  <% end %>
+    <%= paginate actionplans %>
+</ul>

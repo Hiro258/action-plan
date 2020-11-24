@@ -1,0 +1,38 @@
+<div class="text-center">
+  <h1>アクションプラン詳細ページ</h1>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+
+    <%= form_with(model: @actionplan, local: true) do |f| %>
+    <% @actionplans.each do |actionplan| %>
+      
+      <div class="form-group">
+        <%= f.label :infosource, '参考情報' %>
+        <%= actionplan.infosource %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :study, '学んだことは？' %>
+        <%= actionplan.study %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :action, 'アクションプラン' %>
+       <%= actionplan.action %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :status, '状態' %>
+        <%= actionplan.status %>
+      </div>
+      
+<%= link_to :back do %>
+  <button>戻る</button>
+<% end %>
+
+     <% end %>
+    <% end %>
+  </div>
+</div>

@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   
   
   resources :users, only: [:index, :show, :new, :create, :edit, :update]
+  
+  resources :actionplans, only: [:index, :show, :create, :new, :destroy, :edit, :update]
+  
 end
