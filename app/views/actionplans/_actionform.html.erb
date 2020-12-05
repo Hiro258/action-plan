@@ -21,7 +21,9 @@
 
       <div class="form-group">
         <%= f.label :status, '状態' %>
-        <%= f.text_field :status, class: 'form-control' %>
+        
+        <%= f.select :status, [["アクションプラン", "アクションプラン"],["アクション中", "アクション中"], ["コンプリート", "コンプリート"]], include_blank:true, class: 'form-control' %>
+
       </div>
 
       <%= f.submit '登録する', class: 'btn btn-primary btn-block' %>

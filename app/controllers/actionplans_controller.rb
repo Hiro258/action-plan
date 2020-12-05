@@ -4,14 +4,15 @@ class ActionplansController < ApplicationController
   
   def index
     if logged_in?
-      @actionplan = current_user.actionplans.build  # form_with 用
-      @actionplans = current_user.actionplans.order(id: :desc).page(params[:page])
+  #   @actionplans = Actionplan.order(id: :desc).page(params[:page]).per(30)
+      @actionplan_waits = Actionplan.where(status: 'アクションプラン').order(id: :desc).page(params[:page]).per(30)
+      @actionplan_nows = Actionplan.where(status: 'アクション中').order(id: :desc).page(params[:page]).per(30)
+      @actionplan_comps = Actionplan.where(status: 'コンプリート').order(id: :desc).page(params[:page]).per(30)
     end
   end
 
   def show
-      @actionplan = current_user.actionplans.build  # form_with 用
-      @actionplans = current_user.actionplans.order(id: :desc).page(params[:page])
+    @actionplan = Actionplan.find_by(id: params[:id])
   end
 
   def create
@@ -19,11 +20,17 @@ class ActionplansController < ApplicationController
       
     if @actionplan.save
       flash[:success] = 'アクションプランを追加しました。'
-      redirect_to root_url
+      
+      redirect_to current_user;
+      
+#      @actionplans = Actionplan.order(id: :desc).page(params[:page]).per(30)
+#      render :index
+#      render 'users/show'
+#　    redirect_back(fallback_location: root_path)
     else
       @actionplans = current_user.actionplans.order(id: :desc).page(params[:page])
       flash.now[:danger] = 'アクションプランの追加に失敗しました。'
-      render 'top/index'
+      render :new
     end
   end
 
@@ -39,7 +46,7 @@ class ActionplansController < ApplicationController
   def update
     if @actionplan.update(actionplan_params)
       flash[:success] = 'アクションプラン情報を更新しました'
-      redirect_to @user
+      redirect_to current_user;
     else
       flash.now[:danger] = 'アクションプラン情報を更新できませんでした'
       render :edit

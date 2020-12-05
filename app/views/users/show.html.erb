@@ -1,21 +1,20 @@
-<div class="row">
-  <aside class="col-sm-4">
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title"><%= @user.name %></h3>
-      </div>
-      <div class="card-body">
-        <img class="rounded img-fluid" src="<%= gravatar_url(@user, { size: 500 }) %>" alt="">
-      </div>
-    </div>
-  </aside>
-  <div class="col-sm-8">
-    <ul class="nav nav-tabs nav-justified mb-3">
-      <li class="nav-item"><a href="#" class="nav-link">お気に入り</a></li>
-      <li class="nav-item"><a href="#" class="nav-link">アクションプラン</a></li>
-      <li class="nav-item"><a href="#" class="nav-link">アクション中</a></li>
-      <li class="nav-item"><a href="#" class="nav-link">コンプリート</a></li>
-    </ul>
-     <%= render 'actionplans/actions', actionplans: @actionplans %>
-  </div>
+<div class="container">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>お気に入り</th>
+        <th>アクションプラン</th>
+        <th>アクション中</th>
+        <th>コンプリート</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= render 'actionplans/actions', actionplans: @likes %></td>
+        <td><%= render 'actionplans/actions', actionplans: @actionplan_waits %></td>
+        <td><%= render 'actionplans/actions', actionplans: @actionplan_nows %></td>
+        <td><%= render 'actionplans/actions', actionplans: @actionplan_comps %></td>
+      </tr>
+    </tbody>
+  </table>
 </div>

@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+ 
+img.Top {
+ width: 800px;
+ height: 450px;
+  display: block;
+  margin: 0 auto;
+}
+
+img.card {
+ width: 100%;
+}

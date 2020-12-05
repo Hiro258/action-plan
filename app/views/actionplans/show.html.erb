@@ -4,35 +4,31 @@
 
 <div class="row">
   <div class="col-sm-6 offset-sm-3">
-
-    <%= form_with(model: @actionplan, local: true) do |f| %>
-    <% @actionplans.each do |actionplan| %>
-      
-      <div class="form-group">
-        <%= f.label :infosource, '参考情報' %>
-        <%= actionplan.infosource %>
+   <%= form_with(model: @actionplan, local: true) do |f| %>
+   
+     <div class="form-group">
+       <%= f.label :infosource, '参考情報' %>
+       <%=  @actionplan.infosource %>
+     </div>
+     <div class="form-group">
+       <%= f.label :study, '学んだことは？' %>
+       <%=  @actionplan.study %>
+     </div>
+     <div class="form-group">
+       <%= f.label :action, 'アクションプラン' %>
+       <%=  @actionplan.action %>
       </div>
-
       <div class="form-group">
-        <%= f.label :study, '学んだことは？' %>
-        <%= actionplan.study %>
+       <%= f.label :status, '状態' %>
+       <%=  @actionplan.status %>
       </div>
-
       <div class="form-group">
-        <%= f.label :action, 'アクションプラン' %>
-       <%= actionplan.action %>
+       <%= f.label :date, 'アクション投稿日' %>
+       <%=  @actionplan. created_at.strftime("%Y-%m-%d %H:%M") %>
       </div>
-
-      <div class="form-group">
-        <%= f.label :status, '状態' %>
-        <%= actionplan.status %>
-      </div>
-      
-<%= link_to :back do %>
-  <button>戻る</button>
-<% end %>
-
-     <% end %>
+      <%= link_to :back do %>
+        <button>戻る</button>
+      <% end %>
     <% end %>
   </div>
 </div>

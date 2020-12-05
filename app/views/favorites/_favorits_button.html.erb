@@ -1,0 +1,13 @@
+<% if current_user.likes?(actionplan) %>
+  <!-- お気に入り削除ボタン -->
+    <%= form_with(model: current_user.favorites.find_by(actionplan_id: actionplan.id), local: true, method: :delete) do |f| %>
+      <%= hidden_field_tag :actionplan_id, actionplan.id %>
+      <%= f.submit 'お気に入り削除', class: 'btn btn-danger btn-sm' %>
+    <% end %>
+  <% else %>
+    <!-- お気に入り追加ボタン -->
+    <%= form_with(model: current_user.favorites.build, local: true) do |f| %>
+      <%= hidden_field_tag :actionplan_id, actionplan.id %>
+      <%= f.submit 'お気に入り', class: 'btn btn-primary btn-sm' %>
+  <% end %>
+ <% end %>

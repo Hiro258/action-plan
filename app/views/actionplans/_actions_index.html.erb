@@ -3,6 +3,9 @@
   <li class="media mb-3">
     <div class="media-body">
         <div>
+          <%= "実施ユーザ：" + actionplan.user.name %>
+        </div>
+        <div>
           <%= link_to actionplan.action, actionplan_path(actionplan) %>
         </div>
       <% if current_user == actionplan.user %>

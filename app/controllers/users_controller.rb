@@ -10,6 +10,10 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @actionplans = @user.actionplans.order(id: :desc).page(params[:page])
+    @likes = @user.likes.page(params[:page])
+    @actionplan_waits = @user.actionplans.where(status: 'アクションプラン').order(id: :desc).page(params[:page])
+    @actionplan_nows = @user.actionplans.where(status: 'アクション中').order(id: :desc).page(params[:page])
+    @actionplan_comps = @user.actionplans.where(status: 'コンプリート').order(id: :desc).page(params[:page])
   end
 
   def new
@@ -46,6 +50,12 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+  
+  def likes
+    @user = User.find(params[:id])
+    @likes = @user.likes.page(params[:page])
+    counts(@user)
   end
   
   # 正しいユーザーかどうか確認する

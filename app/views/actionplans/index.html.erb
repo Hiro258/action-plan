@@ -1,1 +1,18 @@
-<%= render 'actions', actionplans: @actionplans %>
+<div class="container">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>アクションプラン</th>
+        <th>アクション中</th>
+        <th>コンプリート</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= render 'actionplans/actions_index', actionplans: @actionplan_waits %></td>
+        <td><%= render 'actionplans/actions_index', actionplans: @actionplan_nows %></td>
+        <td><%= render 'actionplans/actions_index', actionplans: @actionplan_comps %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
