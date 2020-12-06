@@ -24,3 +24,17 @@ img.Top {
 img.card {
  width: 100%;
 }
+
+h2 {
+ margin-top:50px;
+ border-bottom: solid 3px black;
+}
+
+h2.action_plan{
+ margin-bottom:50px;
+ border-bottom: solid 3px black;
+}
+
+h3.action_Details {
+ font-size:30px;
+}

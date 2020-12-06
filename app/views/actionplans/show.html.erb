@@ -5,30 +5,29 @@
 <div class="row">
   <div class="col-sm-6 offset-sm-3">
    <%= form_with(model: @actionplan, local: true) do |f| %>
-   
      <div class="form-group">
-       <%= f.label :infosource, '参考情報' %>
-       <%=  @actionplan.infosource %>
+      <h2> <%= f.label :infosource, '参考情報' %></h2>
+      <h3 class="action_Details"><%=  @actionplan.infosource %></h3>
      </div>
      <div class="form-group">
-       <%= f.label :study, '学んだことは？' %>
-       <%=  @actionplan.study %>
+      <h2> <%= f.label :study, '学んだことは？' %></h2>
+      <h3 class="action_Details"><%=  @actionplan.study %></h3>
      </div>
      <div class="form-group">
-       <%= f.label :action, 'アクションプラン' %>
-       <%=  @actionplan.action %>
+       <h2><%= f.label :action, 'アクションプラン' %></h2>
+      <h3 class="action_Details"><%=  @actionplan.action %></h3>
       </div>
       <div class="form-group">
-       <%= f.label :status, '状態' %>
-       <%=  @actionplan.status %>
+      <h2><%= f.label :status, '状態' %></h2>
+      <h3 class="action_Details"><%=  @actionplan.status %></h3>
       </div>
       <div class="form-group">
-       <%= f.label :date, 'アクション投稿日' %>
-       <%=  @actionplan. created_at.strftime("%Y-%m-%d %H:%M") %>
+       <h2><%= f.label :date, 'アクション投稿日' %></h2>
+      <h3 class="action_Details"><%=  @actionplan. created_at.strftime("%Y-%m-%d %H:%M") %></h3>
       </div>
-      <%= link_to :back do %>
-        <button>戻る</button>
-      <% end %>
+      <div class="text-center">
+　　    <%= link_to "戻る", :back, class: 'btn btn-secondary btn-lg text-center' %>
+      </div>
     <% end %>
   </div>
 </div>

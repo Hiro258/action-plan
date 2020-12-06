@@ -12,7 +12,7 @@ class FavoritesController < ApplicationController
   def destroy
     actionplan = Actionplan.find(params[:actionplan_id])
     current_user.unfavorite(actionplan)
-    flash[:success] = 'お気に入りにから削除しました。'
+    flash[:success] = 'お気に入りから削除しました。'
      redirect_to current_user
   end
 end

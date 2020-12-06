@@ -1,29 +1,17 @@
 <ul class="list-unstyled">
   <% actionplans.each do |actionplan| %>
+  <% unless current_user == actionplan.user %>
   <li class="media mb-3">
     <div class="media-body">
         <div>
-          <%= "実施ユーザ：" + actionplan.user.name %>
+          <%= link_to actionplan.user.name, user_path(actionplan.user) %>：<%= link_to actionplan.action, actionplan_path(actionplan) %>
         </div>
-        <div>
-          <%= link_to actionplan.action, actionplan_path(actionplan) %>
-        </div>
-      <% if current_user == actionplan.user %>
-      <div class="btn-group">
-        <div>
-          <%= link_to "編集", edit_actionplan_path(actionplan), class: 'btn btn-secondary btn-sm' %>
-        </div>
-        <div class="ml-2">
-          <%= link_to "削除", actionplan, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
-        </div>
-      </div>
-       <% else %>
         <div>
           <%= render 'favorites/favorits_button', actionplan: actionplan %>
         </div>
-      <% end %>
     </div>
-    </li>
+  </li>
   <% end %>
+ <% end %>
   <%= paginate actionplans %>
 </ul>
