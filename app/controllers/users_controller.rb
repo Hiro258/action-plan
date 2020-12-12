@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   
   before_action :require_user_logged_in, only: [:index, :show, :edit, :update]
-  before_action :correct_user, only: [:update,:edit,:destroy]
+  before_action :correct_user, only: [:update, :edit, :destroy]
   
   def index
     @users = User.order(id: :desc).page(params[:page]).per(30)
@@ -45,6 +45,11 @@ class UsersController < ApplicationController
     end
   end
   
+  def destroy
+    @user.destroy
+    flash[:success] = '退会しました。ご利用ありがとうございました。'
+    redirect_to(root_url)
+  end
 
   private
 

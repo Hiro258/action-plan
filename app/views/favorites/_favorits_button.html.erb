@@ -7,7 +7,7 @@
   <% else %>
     <!-- お気に入り追加ボタン -->
     <%= form_with(model: current_user.favorites.build, local: true) do |f| %>
-      <%= hidden_field_tag :actionplan_id, actionplan.id %>
-      <%= f.submit 'お気に入り', class: 'btn btn-primary btn-sm' %>
+    <%= hidden_field_tag :actionplan_id, actionplan.id , id: "actionplan_id_#{actionplan.id}" %>
+    <%= f.submit 'お気に入り', class: 'btn btn-primary btn-sm' %>
   <% end %>
  <% end %>

@@ -6,9 +6,9 @@ class User < ApplicationRecord
    validates :password, presence: true                 
    has_secure_password
    
-   has_many :actionplans
+   has_many :actionplans, :dependent => :destroy
    
-   has_many :favorites
+   has_many :favorites, :dependent => :destroy
    has_many :likes, through: :favorites, source: :actionplan
    
   #favoriteを追加する
