@@ -6,7 +6,6 @@ class FavoritesController < ApplicationController
     current_user.addfavorite(actionplan)
     flash[:success] = 'お気に入りに追加しました。'
     redirect_to current_user
-    
   end
 
   def destroy
